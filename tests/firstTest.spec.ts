@@ -6,7 +6,7 @@ test.beforeEach( async ({page}) => {
     await page.getByText('Form Layouts').click()
 })
 
-test.skip('Locator syntax rules', async ({page}) => {
+test('Locator syntax rules', async ({page}) => {
     //by Tag Name
     page.locator('input')
 
@@ -28,6 +28,9 @@ test.skip('Locator syntax rules', async ({page}) => {
     //combination of selectors
     await page.locator('input[placeholder="Email"]').first().click()
     page.locator('[placeholder="Email"][type="email"]')
+
+    //by XPath (NOT RECOMMENDED!!!!)
+    await page.locator('//*[@id="inputEmail1"]').click()
 
     //by partial text match
     await page.locator(':text("Using")').click()
