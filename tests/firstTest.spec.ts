@@ -90,7 +90,6 @@ test('extracting values', async ({page}) => {
     //single text value
     const basicForm = page.locator('nb-card').filter({ hasText: "Basic form"})
     const buttonText = await basicForm.locator('button').textContent()
-    const selectedText = await basicForm.locator('button').selectText()
     expect(buttonText).toEqual('Submit')
 
     //all text values
@@ -106,4 +105,16 @@ test('extracting values', async ({page}) => {
     //attribute value
     const placeholderValue = await emailField.getAttribute('placeholder')
     expect(placeholderValue).toEqual('Email')
+})
+
+test('assertions', async({page}) => {
+    const basicFormButton = page.locator('nb-card').filter({ hasText: "Basic form"}).locator('button')
+
+    //General assertion
+    const text = await basicFormButton.textContent()
+    expect(text).toEqual('Submit')
+    expect(await basicFormButton.textContent()).toEqual('Submit')
+
+    //Locator assertion
+    await expect(basicFormButton).toHaveText('Submit')
 })
