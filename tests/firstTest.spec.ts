@@ -114,6 +114,9 @@ test('assertions', async({page}) => {
     const basicFormButton = page.locator('nb-card').filter({ hasText: "Basic form"}).locator('button')
 
     //General assertion
+    const value = 5
+    expect(value).toEqual(5)
+
     const text = await basicFormButton.textContent()
     expect(text).toEqual('Submit')
     expect(await basicFormButton.textContent()).toEqual('Submit')
