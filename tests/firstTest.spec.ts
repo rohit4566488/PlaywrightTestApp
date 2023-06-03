@@ -123,4 +123,8 @@ test('assertions', async({page}) => {
 
     //Locator assertion
     await expect(basicFormButton).toHaveText('Submit')
+
+    //Soft assertion
+    await expect.soft(basicFormButton).toHaveText('Submit5')
+    await basicFormButton.click()
 })
