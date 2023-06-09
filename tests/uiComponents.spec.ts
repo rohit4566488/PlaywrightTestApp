@@ -71,6 +71,7 @@ test('Lists and Dropdown', async ({page}) => {
     page.getByRole('listitem') //the the list has LI tag
 
     const optionList = page.locator('nb-option-list nb-option')
+    // const optionList = page.getByRole('list').locator('nb-option')
     await expect(optionList).toHaveText(["Light", "Dark", "Cosmic", "Corporate"])
     await optionList.filter({hasText: "Cosmic"}).click()
     await expect(dorpDownMenu).toHaveText("Cosmic")
@@ -84,7 +85,7 @@ test('Lists and Dropdown', async ({page}) => {
         "Corporate": "rgb(255, 255, 255)"
     }
 
-    await dorpDownMenu.click()
+    await dorpDownMenu.click() 
     
     for(const color in colors){
         await optionList.filter({hasText: color}).click()
