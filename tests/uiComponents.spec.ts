@@ -172,6 +172,7 @@ test('datepicker', async({page}) => {
 
     // THIS IS PART ONE
     // await page.locator('[class="day-cell ng-star-inserted"]').getByText('11', {exact: true}).click()
+    // await page.locator('nb-calendar-day-cell').filter({hasNot: page.locator('.bounding-month')}).getByText('19', {exact: true}).click()
     // await expect(calendarInputField).toHaveValue('May 11, 2023')
 
     //THIS IS PART TWO
@@ -197,7 +198,7 @@ test('datepicker', async({page}) => {
 
 test('sliders', async({page}) => {
     // Update attribute
-    const tempGauge = page.locator('ngx-temperature-dragger circle').first()
+    const tempGauge = page.locator('[tabtitle="Temperature"] ngx-temperature-dragger circle')
     await tempGauge.evaluate(node => {
         node.setAttribute("cx", "232.193")
         node.setAttribute("cy", "232.193")
@@ -206,7 +207,7 @@ test('sliders', async({page}) => {
 
 
     // Mouse movement
-    const tempBox = page.locator('ngx-temperature-dragger').first()
+    const tempBox = page.locator('[tabtitle="Temperature"] ngx-temperature-dragger')
     await tempBox.scrollIntoViewIfNeeded()
 
     const box = await tempBox.boundingBox()
