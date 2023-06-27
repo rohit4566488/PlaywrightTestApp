@@ -3,9 +3,10 @@ import { test, expect } from '@playwright/test'
 test('drag and drop with iframe', async ({page}) => {
     await page.goto('https://www.globalsqa.com/demo-site/draganddrop/')
 
-    // await page.getByRole('listitem', {name: "High Tatras 2"}).click()
+    // await page.locator('li', {hasText: "High Tatras 2"}).click()
     const frame = page.frameLocator('[rel-title="Photo Manager"] iframe')
     await frame.locator('li', {hasText: "High Tatras 2"}).dragTo(frame.locator('#trash'))
+
 
     //more precise control
     await frame.locator('li', {hasText: "High Tatras 4"}).hover()
