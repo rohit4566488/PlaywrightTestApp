@@ -10,14 +10,11 @@ export class NavigationPage {
 
     async formLayoutsPage(){
         this.selectGroupMenuItem('Forms')
-        // await this.page.getByText('Forms').click()
         await this.page.getByText('Form Layouts').click()
     }
 
     async datePickerPage(){
         this.selectGroupMenuItem('Forms')
-        // await this.page.getByText('Forms').click()
-        await this.page.waitForTimeout(1000)
         await this.page.getByText('Datepicker').click()
     }
 
