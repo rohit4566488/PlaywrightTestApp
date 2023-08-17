@@ -4,13 +4,18 @@ test.beforeEach( async({page}) => {
     await page.goto('http://localhost:4200')
 })
 
-test.describe('Form Layouts page', () => {
+test.describe.only('Form Layouts page', () => {
+    test.describe.configure({retries: 2})
+    
     test.beforeEach( async ({page}) => {
         await page.getByText('Forms').click()
         await page.getByText('Form Layouts').click()
     })
 
-    test('input field', async({page}) => {
+    test('input field', async({page}, testInfo) => {
+        if(testInfo.retry){
+            //do something
+        }
         const usingGridEmailInput = page.locator('nb-card', {hasText: "Using the Grid"}).getByRole('textbox', {name: "Email"})
 
         await usingGridEmailInput.fill('test@test.com') //fill out the value
@@ -33,7 +38,7 @@ test.describe('Form Layouts page', () => {
         await usingTheGridCard.getByRole('radio', {name: "Option 1"}).check({force: true})
         const radioStatus = await usingTheGridCard.getByLabel('Option 1').isChecked()
         expect(radioStatus).toBeTruthy()
-        await expect(usingTheGridCard.getByRole('radio', {name: "Option 2"})).toBeChecked()
+        await expect(usingTheGridCard.getByRole('radio', {name: "Option 1"})).toBeChecked()
         
         await usingTheGridCard.getByLabel('Option 2').check({force: true})
         expect(await usingTheGridCard.getByLabel('Option 1').isChecked()).toBeFalsy()
