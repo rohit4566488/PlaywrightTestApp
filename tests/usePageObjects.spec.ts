@@ -7,7 +7,7 @@ test.beforeEach( async ({page}) => {
 })
 
 
-test('navigation test', async ({page}) => {
+test('navigation test @smoke @regression', async ({page}) => {
     const pm = new PageManager(page)
     await pm.navigateTo().formLayoutsPage()
     await pm.navigateTo().datePickerPage() 
@@ -16,7 +16,7 @@ test('navigation test', async ({page}) => {
     await pm.navigateTo().tooltipPage() 
 })
 
-test('parametrized methods', async({page}) => {
+test('parametrized methods @regression @e2e', async({page}) => {
     const pm = new PageManager(page)
     const randomfullName = faker.person.fullName()
     const randomEmail = `${randomfullName.replace(' ', '')}${faker.number.int({max: 1000})}@test.com`

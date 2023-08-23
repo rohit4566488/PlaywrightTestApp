@@ -31,7 +31,7 @@ export default defineConfig<TestOptions>({
       name: 'dev',
       use: { 
         ...devices['Desktop Chrome'],
-        baseURL: 'http://localhost:4201',
+        baseURL: 'http://localhost:4200',
       }
     },
     {
