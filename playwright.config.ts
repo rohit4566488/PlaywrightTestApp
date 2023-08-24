@@ -49,6 +49,14 @@ export default defineConfig<TestOptions>({
       use: {
         viewport: {width: 1920, height: 1080}
       }
+    },
+    {
+      name: 'mobile',
+      testMatch: 'testMobile.spec.ts',
+      use: {
+        ...devices['iPad Mini'],
+        // viewport: {width: 414, height: 896}
+      }
     }
   ]
 });
