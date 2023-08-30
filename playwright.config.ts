@@ -7,14 +7,16 @@ export default defineConfig<TestOptions>({
   timeout: 20000,
   globalTimeout: 60000,
   expect: {
-    timeout: 5000
+    timeout: 5000,
+    toHaveScreenshot: {maxDiffPixels: 50}
   },
   fullyParallel: false,
   retries: 0,
   reporter: [
     ['json', {outputFile: 'test-results/jsonReport.json'}],
     ['junit', {outputFile: 'test-results/junitReport.xml'}],
-    ['allure-playwright']
+    // ['allure-playwright'],
+    ['html']
   ],
   
 
