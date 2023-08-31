@@ -5,7 +5,7 @@ require('dotenv').config();
 
 export default defineConfig<TestOptions>({
   timeout: 20000,
-  globalTimeout: 60000,
+  // globalTimeout: 60000,
   expect: {
     timeout: 5000,
     toHaveScreenshot: {maxDiffPixels: 50}
@@ -65,5 +65,11 @@ export default defineConfig<TestOptions>({
         // viewport: {width: 414, height: 896}
       }
     }
-  ]
+  ],
+
+  webServer: {
+    command: 'npm run start',
+    url: 'http://localhost:4200',
+    timeout: 120 * 1000,
+  }
 });
