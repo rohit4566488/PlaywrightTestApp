@@ -34,11 +34,13 @@ test('parametrized methods @regression @e2e', async({page}) => {
     await pm.onDatepickerPage().selectDatepickerWithRangeFromToday(6, 10)
 })
 
-// test('test with Argos CI', async({page}) => {
-//     const pm = new PageManager(page)
+test.only('test with Argos CI', async({page}) => {
+    const pm = new PageManager(page)
+    const randomfullName = faker.person.fullName()
+    const randomEmail = `${randomfullName.replace(' ', '')}${faker.number.int({max: 1000})}@test.com`
 
-//     await pm.navigateTo().formLayoutsPage()
-//     await pm.onFormLayoutsPage().submitUsingTheGridFormWithCredentialsAndSelectOption(process.env.USERNAME, process.env.PASSWORD, 'Option 1')
-//     await argosScreenshot(page, "formsLayoutPage")
+    await pm.navigateTo().formLayoutsPage()
+    await pm.onFormLayoutsPage().submitInlineFormWithNameEmailAndCheckbox(randomfullName, randomEmail, false)
+    //await argosScreenshot(page, "formsLayoutPage")
 
-// })
+})
