@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test'
 import { PageManager } from '../page-objects/pageManager'
 import { faker } from '@faker-js/faker'
+import { argosScreenshot } from "@argos-ci/playwright";
 
 test.beforeEach( async ({page}) => {
     await page.goto('/')
@@ -32,3 +33,12 @@ test('parametrized methods @regression @e2e', async({page}) => {
     await pm.onDatepickerPage().selectCommonDatePickerDateFromToday(5)
     await pm.onDatepickerPage().selectDatepickerWithRangeFromToday(6, 10)
 })
+
+// test('test with Argos CI', async({page}) => {
+//     const pm = new PageManager(page)
+
+//     await pm.navigateTo().formLayoutsPage()
+//     await pm.onFormLayoutsPage().submitUsingTheGridFormWithCredentialsAndSelectOption(process.env.USERNAME, process.env.PASSWORD, 'Option 1')
+//     await argosScreenshot(page, "formsLayoutPage")
+
+// })

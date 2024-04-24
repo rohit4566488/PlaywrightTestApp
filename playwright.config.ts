@@ -13,6 +13,17 @@ export default defineConfig<TestOptions>({
   fullyParallel: false,
   retries: 0,
   reporter: [
+    process.env.CI ? ["dot"] : ["list"],
+    [
+      "@argos-ci/playwright/reporter",
+      {
+        // Upload to Argos on CI only.
+        uploadToArgos: !!process.env.CI,
+
+        // Set your Argos token (required if not using GitHub Actions).
+        token: process.env.ARGOS_TOKEN,
+      },
+    ],
     ['json', {outputFile: 'test-results/jsonReport.json'}],
     ['junit', {outputFile: 'test-results/junitReport.xml'}],
     // ['allure-playwright'],
@@ -27,6 +38,7 @@ export default defineConfig<TestOptions>({
             : 'http://localhost:4200',
 
     trace: 'on-first-retry',
+    screenshot: "only-on-failure",
     video: {
       mode: 'off', 
       size: {width: 1920, height: 1080}
