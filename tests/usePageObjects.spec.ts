@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
 import { PageManager } from '../page-objects/pageManager'
 import { faker } from '@faker-js/faker'
-//import { argosScreenshot } from "@argos-ci/playwright";
+import { argosScreenshot } from "@argos-ci/playwright";
 
 test.beforeEach( async ({page}) => {
     await page.goto('/')
@@ -41,6 +41,6 @@ test.only('test with Argos CI', async({page}) => {
 
     await pm.navigateTo().formLayoutsPage()
     await pm.onFormLayoutsPage().submitInlineFormWithNameEmailAndCheckbox(randomfullName, randomEmail, false)
-    //await argosScreenshot(page, "formsLayoutPage")
+    await argosScreenshot(page, "formsLayoutPage")
 
 })
