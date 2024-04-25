@@ -36,14 +36,13 @@ test('parametrized methods @regression @e2e', async({page}) => {
 
 test.only('test with Argos CI', async({page}) => {
     const pm = new PageManager(page)
-    const randomfullName = faker.person.fullName()
-    const randomEmail = `${randomfullName.replace(' ', '')}${faker.number.int({max: 1000})}@test.com`
+    
 
     await pm.navigateTo().formLayoutsPage()
-    await pm.onFormLayoutsPage().submitInlineFormWithNameEmailAndCheckbox(randomfullName, randomEmail, false)
     await argosScreenshot(page, "formsLayoutPage")
 
     await pm.navigateTo().datePickerPage()
-    await pm.onDatepickerPage().selectCommonDatePickerDateFromToday(5)
+    await argosScreenshot(page, "datepickerPage")
+
 
 })
