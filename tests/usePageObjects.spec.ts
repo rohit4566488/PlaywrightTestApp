@@ -43,4 +43,7 @@ test.only('test with Argos CI', async({page}) => {
     await pm.onFormLayoutsPage().submitInlineFormWithNameEmailAndCheckbox(randomfullName, randomEmail, false)
     await argosScreenshot(page, "formsLayoutPage")
 
+    await pm.navigateTo().datePickerPage()
+    await pm.onDatepickerPage().selectCommonDatePickerDateFromToday(5)
+
 })
