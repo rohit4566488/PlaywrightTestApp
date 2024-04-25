@@ -2,9 +2,9 @@
 name: Playwright Tests
 on:
   push:
-    branches: [ class-planning ]
+    branches: [ test-snapshot ]
   pull_request:
-    branches: [ class-planning ]
+    branches: [ test-snapshot ]
 jobs:
   test:
     timeout-minutes: 60
