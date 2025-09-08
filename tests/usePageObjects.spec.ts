@@ -49,4 +49,22 @@ test.only('test with Argos CI', async({page}) => {
     await pm.navigateTo().toastrPage()
     await argosScreenshot(page, "toastrPage")
   
+    if(testInfo.retry){
+            //do something
+        }
+        const usingGridEmailInput = page.locator('nb-card', {hasText: "Using the Grid"}).getByRole('textbox', {name: "Email"})
+
+        await usingGridEmailInput.fill('test@test.com') //fill out the value
+        await usingGridEmailInput.clear()
+        await usingGridEmailInput.type('test2@test.com', {delay: 500}) //simulate the key strokes
+
+        // assertions of the values
+        //general assertion
+        const inputValue = await usingGridEmailInput.inputValue()
+        expect(inputValue).toEqual('test2@test.com')
+
+        //Locator assertion
+        await expect(usingGridEmailInput).toHaveValue('test2@test.com')
+        await argosScreenshot(page, "Type")
+        
 })
