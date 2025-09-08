@@ -37,12 +37,16 @@ test('parametrized methods @regression @e2e', async({page}) => {
 test.only('test with Argos CI', async({page}) => {
     const pm = new PageManager(page)
     
-
     await pm.navigateTo().formLayoutsPage()
     await argosScreenshot(page, "formsLayoutPage")
 
     await pm.navigateTo().datePickerPage()
     await argosScreenshot(page, "datepickerPage")
 
+    await pm.navigateTo().smartTablePage()
+    await argosScreenshot(page, "smartTablePage")
 
+    await pm.navigateTo().toastrPage()
+    await argosScreenshot(page, "toastrPage")
+  
 })
