@@ -48,5 +48,5 @@ test.only('test with Argos CI', async({page}) => {
 
     await pm.navigateTo().toastrPage()
     await argosScreenshot(page, "toastrPage")
-  
+        
 })
